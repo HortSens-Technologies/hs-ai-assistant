@@ -7,6 +7,14 @@ This repository is intended for active development and contributions. All compon
 
 ---
 
+## Live Demo
+
+The production version of the HortSens AI Assistant is available at:
+
+https://www.hortsens.co/hortsensai
+
+---
+
 ## Overview
 
 Router v8.2 operates as a unified query router.  
@@ -157,6 +165,7 @@ These endpoints may be replaced, extended, or adapted depending on deployment ne
 2. Integrate the script into your HTML page.  
 3. Ensure backend endpoints are reachable.  
 4. Open in any modern browser.  
+
 No build process is required.
 
 ---
@@ -172,3 +181,4 @@ See `LICENSE` for full terms.
 
 Router v8.2 is under active development.  
 Contributors are welcome to improve individual modules or propose new capabilities aligned with the design principles of clarity, reliability, and forward compatibility.
+
