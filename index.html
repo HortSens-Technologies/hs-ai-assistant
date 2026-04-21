@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-E94YG7EVR9"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date()); gtag('config', 'G-E94YG7EVR9');
+  </script>
+
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover" />
+  <title>HortSens AI Assistant</title>
+
+  <!-- Favicon / app icons -->
+  <link rel="icon" href="HSA.png?v=1" type="image/png" sizes="32x32" />
+  <link rel="shortcut icon" href="HSA.png?v=1" type="image/png" />
+  <link rel="icon" href="HSA.png?v=1" type="image/png" sizes="192x192" />
+  <link rel="icon" href="HSA.png?v=1" type="image/png" sizes="512x512" />
+  <link rel="apple-touch-icon" href="HSA.png?v=1" />
+  <meta name="theme-color" content="#0f1012" />
+  <meta name="apple-mobile-web-app-title" content="HortSens" />
+  <link rel="manifest" href="manifest.json" />
+
+  <link rel="stylesheet" href="style.css" />
+
+  <!-- iOS/Safari focus containment fix so the menu overlays correctly -->
+  <style>
+    #input-bar, .mode-switch { isolation: isolate; }
+  </style>
+</head>
+
+<body>
+  <!-- Background video + subtle scrim -->
+  <video id="bg-video" src="videola.mp4" autoplay muted loop playsinline></video>
+  <div class="bg-vignette"></div>
+
+  <div id="container">
+    <!-- Sidebar -->
+    <div id="sidebar">
+      <div class="menu-logo">
+        <img src="HSA.png" alt="HortSens Logo" class="sidebar-logo" />
+      </div>
+      <div class="rtra-badge"><span class="dot"></span> RTRA Engine</div>
+    </div>
+
+    <!-- Main Content -->
+    <div id="main-content">
+      <!-- Title and Greeting -->
+      <div id="greeting">
+        <img src="favicon.png" alt="HortSens AI Logo" class="logo" />
+        <h1>Hello!</h1>
+        <p>I'm here to assist you with the web</p>
+      </div>
+
+      <!-- Predefined Questions -->
+      <div id="predefined-questions">
+        <button id="button1" class="question" type="button">Capital of Germany</button>
+        <button id="button2" class="question" type="button">Isaac Newton</button>
+        <button id="button3" class="question" type="button">Search Orcas</button>
+      </div>
+
+      <!-- Status / Thinking line -->
+      <div id="status" aria-live="polite"></div>
+
+      <!-- Chat Area -->
+      <div id="chat-container" aria-label="Conversation"></div>
+
+      <!-- Sources row (optional) -->
+      <div id="sources"></div>
+
+      <!-- Input bar with HS Mode Switch -->
+      <div id="input-bar">
+        <!-- Mode Switch (no JS required yet; opens on focus/hover) -->
+        <div class="mode-switch" id="mode-switch" aria-label="Mode selector">
+          <button
+            class="mode-current"
+            id="mode-current"
+            type="button"
+            aria-haspopup="listbox"
+            aria-expanded="false"
+            aria-labelledby="mode-current mode-list"
+            data-mode="search"
+            title="Switch mode"
+          >
+            <span class="mode-dot"></span>
+            <span class="mode-label">Search</span>
+            <svg class="mode-chev" viewBox="0 0 24 24" width="16" height="16" aria-hidden="true">
+              <path d="M7 10l5 5 5-5" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </button>
+
+          <ul class="mode-menu" id="mode-list" role="listbox" aria-label="Assistant mode">
+            <li class="mode-option" role="option" data-mode="search" aria-selected="true">
+              <span class="mode-dot"></span> Search mode
+            </li>
+            <li class="mode-option" role="option" data-mode="conversation">
+              <span class="mode-dot"></span> Conversation mode
+            </li>
+            <li class="mode-option" role="option" data-mode="math">
+              <span class="mode-dot"></span> Math mode
+            </li>
+          </ul>
+        </div>
+
+        <input
+          type="text"
+          id="text-input"
+          placeholder="Send a message… (e.g., “graph y=sin(x)” or “search orcas”)"
+          autocomplete="off"
+          aria-label="Message input"
+        />
+        <button id="math-toggle" aria-label="Math keyboard" title="Math keyboard" type="button"></button>
+        <button id="send-button" class="send-button" aria-label="Send" title="Send" type="button"></button>
+      </div>
+
+      <!-- Footer Links -->
+      <div id="footer">
+        <a href="https://www.hortsens.co/privacy-policy" target="_blank" rel="noreferrer">Privacy Policy</a>
+        <a href="https://www.hortsens.co/terms" target="_blank" rel="noreferrer">Terms &amp; Conditions</a>
+        <a href="https://www.hortsens.co/ai-assistant" target="_blank" rel="noreferrer">Website</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Math keyboard host (JS fills it) -->
+  <div id="hs-math-kb" aria-hidden="true"></div>
+
+  <!-- Your logic -->
+  <script src="logic.js"></script>
+</body>
+</html>
